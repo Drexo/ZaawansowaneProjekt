@@ -1,15 +1,9 @@
 import model
 import pandas as pd
 from fastapi import FastAPI
-from datetime import datetime
 
 app = FastAPI()
 model = model.make_model()
-
-@app.get("/aktualna-data")
-def get_aktualna_data():
-    aktualna_data = datetime.now()
-    return {"aktualna_data": aktualna_data}
 
 @app.post("/predict")
 def predict_price(age: int, sex: str, race: str, educationnum: int, workclass: str, occupation: str, maritalstatus: str, hoursperweek: int):
